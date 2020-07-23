@@ -1,0 +1,55 @@
+<html>
+<tittle>
+<p>	Считалка параметров РЕПО </p>
+</tittle>
+<head>
+<meta charset ="utf-8">
+
+	<p>Рассчитываем с указанием Количества и Начального Дисконта</p>
+	<p>Разделитель между целой и дробной частью - точка.</p>
+<script>	
+function calc()
+{
+	
+	var N=document.forma1.t1.value; //Кол-во ценных бумаг
+	var Dn=document.forma1.t2.value; //Начальный дисконт
+	var Nom=document.forma1.t3.value; //Номинал облигации
+	var Po=document.forma1.t4.value;  //Расчетная цена
+	var Eo=document.forma1.t5.value;   //Курс валюты
+	var Ao=document.forma1.t6.value;   //НКД
+	var S1=(1-Dn / 100);               //Первый множитель
+	var S2=((+N * +Po * +Nom) / 100).toFixed(2) * +Eo; //Первое округление первой части
+	var S3=S2.toFixed(2);                               //Второе округление первой части
+
+	var S4 = (Ao * N).toFixed(2) * +Eo;                   //Первое округление второй части
+	var S5=+S4.toFixed(2);                                //Второе округление второй части   
+
+	var S=S1 * (+S3 + +S5); // Сумма
+
+
+document.forma1.res.value=S; //результат
+
+}
+</script>
+
+
+
+
+</head>
+<body><form name="forma1">
+ 
+
+<p>Количество ценных бумаг<input type="num" name ="t1" size ="10"></p> 
+<p>Начальный дисконт <input type="num" name ="t2" size ="10"> </p>
+<p>Номинал облигации <input type="num" name ="t3" size ="10"></p>         
+<p>Расчетная цена <input type="num" name="t4" size ="10"></p>
+<p>Курс валюты <input type="num" name="t5" size ="10"></p>
+<p>НКД <input type="num" name="t6" size ="10"></p>
+<p><input type="button" name="button" value="Расчитать" onClick="calc();"> </p>
+<p> Сумма РЕПО<input type="string" name="res" size="10"> </p>
+<p><input type="reset" value="Сброс";"> </p>
+</form>
+
+</body>
+
+</html>  
