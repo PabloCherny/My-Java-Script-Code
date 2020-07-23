@@ -1,0 +1,200 @@
+<html>
+<head>
+<script>
+
+var message="Правая кнопка мыши отключена!";
+function click(e) {
+   if (document.all) {    // IE
+      if (event.button == 2) {    // Чтобы отключить левую кнопку поставьте цифру 1
+          alert(message);    // чтобы отключить среднюю кнопку поставьте цифру 1
+          return false;}
+      }
+   if (document.layers) { // NC
+      if (e.which == 3) {
+          alert(message);
+          return false;}
+      }
+}
+if (document.layers)
+   {document.captureEvents(Event.MOUSEDOWN);}
+document.onmousedown=click;
+document.oncontextmenu=function(e){return false};
+
+</script>
+<script type="text/javascript">
+	document.onkeydown = function(e) {
+		e = e || window.event;
+	if(e.keyCode == 85 | e.keyCode == 83 | e.keyCode == 123)  {
+     return false;
+   }
+   return true;
+	}
+</script>
+<meta charset="UTF-8">
+	<title>Термины и определения Правил торгов Московской Биржи</title>
+</head>
+
+
+<span style='font-size:10pt;margin-left: 65%'>
+
+
+<script type="text/javascript">
+
+
+// Подзаголовок (h2)
+var subtitle = "Этот тест позволяет оценить Ваши знания терминов и определений общей части Правил Торгов ПАО Московская Биржа";
+// Наши вопросы
+var questions=[
+
+{
+	text: "Цифровые данные и иные сведения неконфиденциального характера о ходе и итогах торгов на Московской Бирже:",
+	answers: ["Биржевая информация",
+	          "Коммерческая тайна",
+              "Секретная информация"],
+    correctAnswer: 0
+},	
+
+{
+	text: "Заявка противоположной направленности, поданная в соответствующих Секциях рынка/Режимах торгов, при условии совпадения необходимых параметров:",
+	answers: ["Конкурирующая заявка",
+	          "Встречная заявка",
+              "Опережающая заявка"],
+    correctAnswer: 1
+},
+{
+	text: "Дата, при наступлении которой возможно заключение сделки(ок) на основании данной заявки:",
+	answers: ["Дата заключения сделки",
+	           "Дата исполнения",
+			   "Дата активации заявки"],
+	correctAnswer: 2
+},
+
+{
+	text: "Дата, в которую в соответствии с условиями заключенной сделки с ценными бумагами и Правилами торгов Участники торгов и/или клиринговая организация обязаны исполнить свои обязательства по сделке:",
+	answers: ["Дата завершения сделки",
+			  "Дата исполнения",
+			  "Дата прекращения"],
+	correctAnswer: 1
+},
+{
+	text: "Дата, начиная с которой не допускается исполнение в натуре обязательств по сделке с ценными бумагами:",
+	answers: ["Дата прекращения исполнения",
+			  "Дата завершения",
+			  "Дата остановки"],
+	correctAnswer: 0
+},
+{
+	text: "Одна или совокупность нескольких заявок, поданных во исполнение обязательств Маркет-мейкера на покупку ценных бумаг, и одна или совокупность нескольких заявок, поданных во исполнение обязательств Маркетмейкера на продажу ценных бумаг, поданные Маркет-мейкером от своего имени и за свой счет, либо от своего имени по поручению и за счет клиента, с ценовыми условиями, при которых величина спрэда двусторонней котировки меньше или равна величине предельного спрэда:",
+	answers: ["Односторонняя котировка",
+			  "Двусторонняя котировка",
+			  "Биржевая котировка"],
+	correctAnswer: 1
+			
+},
+{
+    text: "Форма проведения торгов в Режиме основных торгов и/или в ходе торгов в Режиме торгов «Режим основных торгов T+» в порядке, предусмотренном Специальной частью II Правил торгов:",
+	answers: ["Дискретный аукцион",
+	          "Встречный аукцион",
+			  "Аукцион закрытия"],
+	correctAnswer: 0
+},
+
+	
+{
+		text: "Подписанное АСП и передаваемое в Систему торгов Московской Биржи электронное сообщение, содержащее предложение (предложения) участника торгов на заключение сделки (сделок) с ценными бумагами (оферту/оферты) и (или) уведомление (уведомления) Участника торгов о принятии такого предложения (предложений)",
+        answers: ["Лот",
+		          "Отчет",
+				  "Заявка"],
+		correctAnswer: 2
+},
+{
+		text: "Юридическое или физическое лицо, зарегистрированное в Системе торгов Московской Биржи на основании данных, полученных от Участника торгов или от Клиринговой организации:",
+		answers: ["Клиент",
+		          "Контрагент",
+				  "Эмитент"],
+		correctAnswer: 0
+},
+
+		
+{
+	text: "Код, определяющий условия принятия заявки к исполнению, а также порядок и условия исполнения сделки, предусмотренные внутренними документами Клиринговой организации:",
+	answers: ["Платежный код",
+	          "Код расчетов",
+			  "Код счета"],
+	correctAnswer: 1
+},
+
+
+
+];
+
+
+
+
+var yourAns = new Array;
+var score = 0;
+
+function Engine(question, answer) {yourAns[question]=answer;}
+
+function Score(){
+   var answerText = "Результаты:\n";
+   for(var i = 0; i < yourAns.length; ++i){
+    var num = i+1;
+    answerText=answerText+"\n    Вопрос №"+ num +"";
+    if(yourAns[i]!=questions[i].correctAnswer){
+        answerText=answerText+"\n    Правильный ответ: " +
+        questions[i].answers[questions[i].correctAnswer] + "\n";
+      }
+        else{
+        answerText=answerText+": Верно! \n";
+        ++score;
+        }
+	
+
+       }
+
+   answerText=answerText+"\nВсего правильных ответов: "+score+"\n";
+
+   alert(answerText);
+   //document.writeln('<pre>' + answerText + '</pre>');
+   yourAns = [];
+   score = 0;
+   clearForm("quiz");
+}
+function clearForm(name) {
+   var f = document.forms[name];
+   for(var i = 0; i < f.elements.length; ++i) {
+    if(f.elements[i].checked)
+        f.elements[i].checked = false;
+}
+}
+</script>
+
+<style>
+span.quest {font-weight: bold;}
+</style>
+
+<h1><script>document.write(title)</script></h1>
+<h2><script>document.write(subtitle)</script></h2>
+
+<form name="quiz">
+<ol>
+<script>
+for(var q=0; q<questions.length; ++q) {
+  // var qq = Math.floor(Math.random()*questions.length);
+   var question = questions[q];
+   var idx = 1 + q;
+
+   document.writeln('<li><span class="quest">' + question.text + '</span><br/>');
+   for(var i in question.answers) {
+    document.writeln('<input type=radio name="q' + idx + '" value="' + i +
+    '" onClick="Engine(' + q + ', this.value)">' + question.answers[i] + '<br/>');
+}
+}
+</script>
+</ol>
+<input type="button" onClick="Score()" value="Проверить результаты" />
+
+</form>
+
+</html>
